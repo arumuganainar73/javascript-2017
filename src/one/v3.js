@@ -3,14 +3,13 @@
 var userURL = "https://reqres.in/api/users?page=1&per_page=10";
 
 function loadUserData(userURL) {
-  fetch(userURL).then(response => response.json())
-                .then(function({ data }) {
-                        var userHtml = "";
-                        for (i = 0; i < data.length; i++) {
-                           userHtml += buildUserHTML(data[i]);
-                        }
-                        $("#users").html(userHtml);
-                    });
+  fetch(userURL).then(response => response.json()).then(function({ data }) {
+    var userHtml = "";
+    for (i = 0; i < data.length; i++) {
+      userHtml += buildUserHTML(data[i]);
+    }
+    $("#users").html(userHtml);
+  });
 }
 
 function buildUserHTML({ avatar, first_name, last_name }) {

@@ -16,7 +16,9 @@ function loadUserData(userURL) {
 
 function buildUserHTML(user) {
   var userHtml = '<div class="col-md-3 span3 well"><center>';
-  userHtml += '<img src="' + user.avatar + '" name="aboutme" width="140" height="140" class="img-circle">';
+  userHtml += '<img src="' +
+    user.avatar +
+    '" name="aboutme" width="140" height="140" class="img-circle">';
   userHtml += "<h3>" + user.first_name + " " + user.last_name + "</h3>";
   userHtml += "</center></div>";
   return userHtml;

@@ -10,7 +10,7 @@ function loadUserData(userURL) {
       for (i = 0; i < data.length; i++) {
         userHtml += buildUserHTML(data[i]);
       }
-        $("#users").html(userHtml);
+      $("#users").html(userHtml);
     }
   });
 }

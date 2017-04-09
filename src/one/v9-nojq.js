@@ -1,24 +1,23 @@
-// Template Strings | Object Destructuring | Fetch API | Map | Lambdas 
+// Template Strings | Object Destructuring | Fetch API | Map | Lambdas
 // Refactor with Single responsiblity principle | No jquery
 const userURL = "https://reqres.in/api/users?page=1&per_page=10";
 
-const buildUsersHTML = ({ data : users }) =>  users.map(userHTML).join('')
+const buildUsersHTML = ({ data: users }) => users.map(userHTML).join("");
 
-const renderUsers = html => document.getElementById("users").innerHTML = html
+const renderUsers = html => document.getElementById("users").innerHTML = html;
 
-const fetchJSON = url => fetch(url).then(response => response.json())
+const fetchJSON = url => fetch(url).then(response => response.json());
 
-const loadUserData = userURL => fetchJSON(userURL).then(buildUsersHTML)
-                                                 .then(renderUsers)
+const loadUserData = userURL =>
+  fetchJSON(userURL).then(buildUsersHTML).then(renderUsers);
 
-function userHTML({ avatar, first_name, last_name }) {
-  return `<div class="col-md-3 span3 well">
+const userHTML = ({ avatar, first_name, last_name }) =>
+  `<div class="col-md-3 span3 well">
              <center>
-                  <img src="${avatar}" name="aboutme" width="140" height="140" class="img-circle">
+                  <img src="${avatar}" width="140" height="140" class="img-circle">
                   <h3>${first_name} ${last_name}</h3>
              </center>
-         </div>`;
-}
+   </div>`;
 
 loadUserData(userURL);
 
@@ -33,4 +32,3 @@ BUG PRONE
   1) HTML rendering - Easier to find out bugs 
   2) Anywhere there are loops - Done
 */
-

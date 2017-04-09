@@ -1,13 +1,12 @@
 // Template Strings | Object Destructuring | Fetch API | Map
 
-var userURL = "https://reqres.in/api/users?page=1&per_page=10";
+const userURL = "https://reqres.in/api/users?page=1&per_page=10";
 
 function loadUserData(userURL) {
-  fetch(userURL).then(response => response.json())
-                .then(function({ data }) {
-                        var userHtml = data.map(buildUserHTML).join('')
-                        $("#users").html(userHtml);
-                     });
+  fetch(userURL).then(response => response.json()).then(function({ data }) {
+    const userHtml = data.map(buildUserHTML).join("");
+    $("#users").html(userHtml);
+  });
 }
 
 function buildUserHTML({ avatar, first_name, last_name }) {

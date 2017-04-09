@@ -1,15 +1,15 @@
-// Template Strings | Object Destructuring | Fetch API | Map | Lambdas 
+// Template Strings | Object Destructuring | Fetch API | Map | Lambdas
 // Refactor with Single responsiblity principle
 const userURL = "https://reqres.in/api/users?page=1&per_page=10";
 
-const buildUsersHTML = ({ data : users }) =>  users.map(userHTML).join('')
+const buildUsersHTML = ({ data: users }) => users.map(userHTML).join("");
 
-const renderUsers = html => $("#users").html(html)
+const renderUsers = html => $("#users").html(html);
 
-const fetchJSON = url => fetch(url).then(response => response.json())
+const fetchJSON = url => fetch(url).then(response => response.json());
 
-const loadUserData = userURL => fetchJSON(userURL).then(buildUsersHTML)
-                                                  .then(renderUsers)
+const loadUserData = userURL =>
+  fetchJSON(userURL).then(buildUsersHTML).then(renderUsers);
 
 function userHTML({ avatar, first_name, last_name }) {
   return `<div class="col-md-3 span3 well">
