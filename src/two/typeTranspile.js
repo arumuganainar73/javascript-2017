@@ -4,7 +4,13 @@ const userURL = "https://reqres.in/api/users?page=1&per_page=10"
 
 const buildUsersHTML = ({ data: users }) => users.map(userHTML).join("")
 
-const renderUsers = html => document.getElementById("users").innerHTML = html
+const renderUsers = html => {
+  const ele = document.getElementById("users")
+  if (ele == null) {
+    throw "Error"
+  }
+  ele.innerHTML = html
+}
 
 const fetchJSON = url => fetch(url).then(response => response.json())
 

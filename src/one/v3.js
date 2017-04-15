@@ -1,15 +1,15 @@
 // Template Strings | Object Destructuring | Fetch API
 
-var userURL = "https://reqres.in/api/users?page=1&per_page=10";
+var userURL = "https://reqres.in/api/users?page=1&per_page=10"
 
 function loadUserData(userURL) {
   fetch(userURL).then(response => response.json()).then(function({ data }) {
-    var userHtml = "";
+    var userHtml = ""
     for (i = 0; i < data.length; i++) {
-      userHtml += buildUserHTML(data[i]);
+      userHtml += buildUserHTML(data[i])
     }
-    $("#users").html(userHtml);
-  });
+    $("#users").html(userHtml)
+  })
 }
 
 function buildUserHTML({ avatar, first_name, last_name }) {
@@ -18,10 +18,10 @@ function buildUserHTML({ avatar, first_name, last_name }) {
                   <img src="${avatar}" name="aboutme" width="140" height="140" class="img-circle">
                   <h3>${first_name} ${last_name}</h3>
              </center>
-         </div>`;
+         </div>`
 }
 
-loadUserData(userURL);
+loadUserData(userURL)
 
 /* 
  PAIN POINTS 

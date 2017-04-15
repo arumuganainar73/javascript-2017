@@ -1,17 +1,35 @@
 // Template Strings | Object Destructuring | Fetch API | Map | Lambdas
 // Refactor with Single responsiblity principle | No jquery
+// @flow
+
+type user = {
+  avatar: string,
+  first_name: string,
+  last_name: string
+}
+
+type userResponse = {
+  data: Array<user>
+}
+
 const userURL = "https://reqres.in/api/users?page=1&per_page=10"
 
-const buildUsersHTML = ({ data: users }) => users.map(userHTML).join("")
+const buildUsersHTML: userResponse => string = ({ data: users }) =>
+  users.map(userHTML).join("")
 
-const renderUsers = html => document.getElementById("users").innerHTML = html
+const renderUsers: string => void = html => {
+  const ele = document.getElementById("users")
+  if (ele == null) throw "Error"
+  ele.innerHTML = html
+}
 
-const fetchJSON = url => fetch(url).then(response => response.json())
+const fetchJSON: string => Promise<userResponse> = url =>
+  fetch(url).then(response => response.json())
 
 const loadUserData = userURL =>
   fetchJSON(userURL).then(buildUsersHTML).then(renderUsers)
 
-const userHTML = ({ avatar, first_name, last_name }) =>
+const userHTML: user => string = ({ avatar, first_name, last_name }) =>
   `<div class="col-md-3 span3 well">
              <center>
                   <img src="${avatar}" width="140" height="140" class="img-circle">

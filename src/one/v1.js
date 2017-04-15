@@ -1,30 +1,31 @@
-var userURL = "https://reqres.in/api/users?page=1&per_page=10";
+var userURL = "https://reqres.in/api/users?page=1&per_page=10"
 function loadUserData(userURL) {
   $.ajax({
     url: userURL,
     type: "GET",
     success: function(response) {
-      var data = response.data;
-      var userHtml = "";
+      var data = response.data
+      var userHtml = ""
       for (i = 0; i < data.length; i++) {
-        userHtml += buildUserHTML(data[i]);
+        userHtml += buildUserHTML(data[i])
       }
-      $("#users").html(userHtml);
+      $("#users").html(userHtml)
     }
-  });
+  })
 }
 
 function buildUserHTML(user) {
-  var userHtml = '<div class="col-md-3 span3 well"><center>';
-  userHtml += '<img src="' +
+  var userHtml = '<div class="col-md-3 span3 well"><center>'
+  userHtml +=
+    '<img src="' +
     user.avatar +
-    '" name="aboutme" width="140" height="140" class="img-circle">';
-  userHtml += "<h3>" + user.first_name + " " + user.last_name + "</h3>";
-  userHtml += "</center></div>";
-  return userHtml;
+    '" name="aboutme" width="140" height="140" class="img-circle">'
+  userHtml += "<h3>" + user.first_name + " " + user.last_name + "</h3>"
+  userHtml += "</center></div>"
+  return userHtml
 }
 
-loadUserData(userURL);
+loadUserData(userURL)
 
 /* 
  PAIN POINTS 

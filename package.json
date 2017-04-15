@@ -7,7 +7,10 @@
     "start": "http-server",
     "clean": "rimraf node_modules",
     "build-one": "babel ./src/one/v10.js --out-file ./src/one/v10Transpile.js",
-    "format": "prettier --write './src/**/*.js'"
+    "build-two": "babel ./src/two/type.js --out-file ./src/two/typeTranspile.js && yarn run format-w",
+    "format": "prettier --no-semi --write './src/**/*.js'",
+    "format-w": "prettier --no-semi --write ./src/**/*.js"
+    
   },
   "license": "MIT",
   "dependencies": {
@@ -16,12 +19,15 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
-    "prettier": "^0.22.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.44.0",
+    "prettier": "^1.1.0",
     "rimraf": "^2.6.1"
   },
   "babel": {
     "presets": [
-      "es2017"
+      "es2017",
+      "flow"
     ]
   }
 }

@@ -1,12 +1,12 @@
 // Template Strings | Object Destructuring | Fetch API | Map | Lambdas
 
-var userURL = "https://reqres.in/api/users?page=1&per_page=10";
+var userURL = "https://reqres.in/api/users?page=1&per_page=10"
 
 function loadUserData(userURL) {
   fetch(userURL).then(response => response.json()).then(({ data }) => {
-    var userHtml = data.map(buildUserHTML).join("");
-    $("#users").html(userHtml);
-  });
+    var userHtml = data.map(buildUserHTML).join("")
+    $("#users").html(userHtml)
+  })
 }
 
 function buildUserHTML({ avatar, first_name, last_name }) {
@@ -15,10 +15,10 @@ function buildUserHTML({ avatar, first_name, last_name }) {
                   <img src="${avatar}" name="aboutme" width="140" height="140" class="img-circle">
                   <h3>${first_name} ${last_name}</h3>
              </center>
-         </div>`;
+         </div>`
 }
 
-loadUserData(userURL);
+loadUserData(userURL)
 
 /* 
  PAIN POINTS 
